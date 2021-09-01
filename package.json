@@ -1,0 +1,27 @@
+{
+  "name": "iot2web",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Library for interacting with IoT Core from the browser",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Aclima/iot2web.git"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0"
+  },
+  "keywords": [
+    "science"
+  ],
+  "scripts": {
+    "clean": "rimraf node_modules"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "typescript": "^4.4.2"
+  },
+  "bundleDependencies": false,
+  "target": "web"
+}
