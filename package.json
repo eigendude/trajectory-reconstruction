@@ -16,6 +16,7 @@
     "science"
   ],
   "scripts": {
+    "audit": "audit-ci --moderate --package-manager npm",
     "clean": "rimraf node_modules",
     "format": "prettier --write . && eslint --fix .",
     "lint": "prettier --check . && eslint ."
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.30.0",
     "@typescript-eslint/parser": "^4.30.0",
+    "audit-ci": "^4.1.0",
     "eslint": "^7.32.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "prettier": "^2.3.2",

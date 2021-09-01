@@ -14,6 +14,10 @@ In the project directory, you can run:
 
 Installs the Javascript dependencies of the project.
 
+### `yarn audit-ci`
+
+Audits installed Javascript dependencies for vulnerabilities.
+
 ### `yarn format`
 
 Applies automated formatting tools (prettier, eslint).
