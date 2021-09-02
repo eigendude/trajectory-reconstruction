@@ -18,6 +18,10 @@ module.exports = {
       static: true,
       resolve: false,
     },
+    // Source directory
+    src: {
+      url: "/_dist_",
+    },
   },
   devOptions: {
     bundle: false,
