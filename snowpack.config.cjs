@@ -10,7 +10,15 @@ const polyfills = require("rollup-plugin-node-polyfills");
 const resolve = require("@rollup/plugin-node-resolve").nodeResolve;
 
 module.exports = {
-  mount: {},
+  mount: {
+    // Mount "public" to the root URL path ("/#") and serve files with zero
+    // transformations
+    public: {
+      url: "/",
+      static: true,
+      resolve: false,
+    },
+  },
   devOptions: {
     bundle: false,
   },
