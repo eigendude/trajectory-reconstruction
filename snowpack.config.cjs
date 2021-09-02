@@ -36,7 +36,20 @@ module.exports = {
   buildOptions: {
     minify: false,
   },
-  plugins: ["@snowpack/plugin-typescript"],
+  plugins: [
+    "@snowpack/plugin-typescript",
+    [
+      "snowpack-plugin-copy",
+      {
+        patterns: [
+          {
+            source: "public/.nojekyll",
+            destination: "build",
+          },
+        ],
+      },
+    ],
+  ],
   optimize: {
     treeshake: true,
   },

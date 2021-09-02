@@ -23,6 +23,7 @@
     "depends:build": "bash tools/npm-depends.sh build",
     "depends:checkout": "bash tools/npm-depends.sh checkout",
     "depends:install": "bash tools/npm-depends.sh install",
+    "deploy": "gh-pages --branch main --repo https://github.com/eigendude/eigendude.github.io.git --dist build --dotfiles",
     "format": "prettier --write . && eslint --fix .",
     "lint": "prettier --check . && eslint .",
     "start": "snowpack dev",
@@ -49,6 +50,7 @@
     "chai": "^4.3.4",
     "eslint": "^7.32.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "gh-pages": "^3.2.3",
     "mocha": "^9.1.1",
     "prettier": "^2.3.2",
     "prettier-plugin-pkg": "^0.10.0",
@@ -56,9 +58,14 @@
     "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-node-polyfills": "^0.2.1",
     "snowpack": "^3.8.8",
+    "snowpack-plugin-copy": "^1.0.1",
     "threads": "^1.6.5",
     "threads-plugin": "^1.4.0",
     "typescript": "^4.4.2"
+  },
+  "resolutions": {
+    "glob-parent": "6.0.2",
+    "vm2": "3.9.9"
   },
   "bundleDependencies": false,
   "target": "web"
