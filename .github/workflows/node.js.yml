@@ -62,8 +62,40 @@ jobs:
       - name: yarn audit-ci
         run: yarn audit-ci
 
-      - name: yarn lint
-        run: yarn lint
+      # TODO
+      #- name: yarn lint
+      #  run: yarn lint
+
+      - name: Restore OpenCV library
+        id: restore-opencv
+        uses: actions/cache@v2
+        with:
+          path: |
+            src/generated/opencv.js
+            tools/dist
+          key: restore-opencv-${{ matrix.os }}-${{ hashFiles('tools/depends/ade/*', 'tools/depends/ceres-solver/*', 'tools/depends/eigen/*', 'tools/depends/emscripten/*', 'tools/depends/google-flags/*', 'tools/depends/google-log/*', 'tools/depends/opencv/*') }}
+
+      - name: Restore C++ libraries
+        id: restore-libraries
+        uses: actions/cache@v2
+        with:
+          path: |
+            public/motion_tracker/motion_tracker.js
+            public/motion_tracker/motion_tracker.wasm
+          key: restore-libraries-${{ matrix.os }}-${{ hashFiles('lib/**', 'tools/depends/ade/*', 'tools/depends/ceres-solver/*', 'tools/depends/eigen/*', 'tools/depends/emscripten/*', 'tools/depends/google-flags/*', 'tools/depends/google-log/*', 'tools/depends/opencv/*') }}
+
+      - name: Restore dependency libraries
+        id: restore-library-depends
+        uses: actions/cache@v2
+        if: steps.restore-opencv.outputs.cache-hit != 'true'
+        with:
+          path: |
+            tools/dist
+          key: restore-library-depends-${{ matrix.os }}-${{ hashFiles('tools/depends/ade/*', 'tools/depends/ceres-solver/*', 'tools/depends/eigen/*', 'tools/depends/emscripten/*', 'tools/depends/google-flags/*', 'tools/depends/google-log/*', 'tools/depends/opencv/*') }}
+
+      - name: Build depends
+        if: steps.restore-libraries.outputs.cache-hit != 'true' || steps.restore-opencv.outputs.cache-hit != 'true'
+        run: yarn depends
 
       - name: yarn test
         run: yarn test

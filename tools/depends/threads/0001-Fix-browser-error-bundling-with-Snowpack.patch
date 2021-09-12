@@ -1,0 +1,50 @@
+From 7885b23fa11c8305b96fcd886c88e8f3609c9e2f Mon Sep 17 00:00:00 2001
+From: Marquise Stein <botocratic@gmail.com>
+Date: Sun, 12 Jul 2020 16:06:14 -0700
+Subject: [PATCH] Fix browser error bundling with Snowpack
+
+For some reason, building with Snowpack, Babel and Rollup transforms the
+final if-block in the file to be:
+
+    if (undefined.on === "function") ;
+    export { BlobWorker, DefaultSerializer, Pool, Thread, Transfer, ... };
+
+Troubleshooting was unable to locate the erroneous transformation.
+
+Error was:
+
+    Uncaught TypeError: Cannot read property 'on' of undefined
+---
+ dist-esm/worker/index.js | 2 +-
+ dist/worker/index.js     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/dist-esm/worker/index.js b/dist-esm/worker/index.js
+index fd5db13..72f75ff 100644
+--- a/dist-esm/worker/index.js
++++ b/dist-esm/worker/index.js
+@@ -185,7 +185,7 @@ if (typeof self !== "undefined" && typeof self.addEventListener === "function" &
+         }
+     });
+ }
+-if (typeof process !== "undefined" && typeof process.on === "function" && Implementation.isWorkerRuntime()) {
++if (typeof process !== "undefined" && Implementation.isWorkerRuntime()) {
+     process.on("uncaughtException", (error) => {
+         // Post with some delay, so the master had some time to subscribe to messages
+         setTimeout(() => postUncaughtErrorMessage(error), 250);
+diff --git a/dist/worker/index.js b/dist/worker/index.js
+index 291e84c..6b1c337 100644
+--- a/dist/worker/index.js
++++ b/dist/worker/index.js
+@@ -194,7 +194,7 @@ if (typeof self !== "undefined" && typeof self.addEventListener === "function" &
+         }
+     });
+ }
+-if (typeof process !== "undefined" && typeof process.on === "function" && implementation_1.default.isWorkerRuntime()) {
++if (typeof process !== "undefined" && implementation_1.default.isWorkerRuntime()) {
+     process.on("uncaughtException", (error) => {
+         // Post with some delay, so the master had some time to subscribe to messages
+         setTimeout(() => postUncaughtErrorMessage(error), 250);
+-- 
+2.20.1
+

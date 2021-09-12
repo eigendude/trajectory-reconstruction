@@ -22,6 +22,10 @@ module.exports = {
     src: {
       url: "/_dist_",
     },
+    // C++ library directory
+    lib: {
+      url: "/lib",
+    },
   },
   devOptions: {
     bundle: false,
@@ -35,7 +39,7 @@ module.exports = {
   },
   packageOptions: {
     sourceMap: true,
-    knownEntrypoints: [],
+    knownEntrypoints: ["three"],
     rollup: {
       plugins: [
         // Fix "Uncaught TypeError: bufferEs6.hasOwnProperty is not a function"

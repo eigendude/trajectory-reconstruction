@@ -1,0 +1,36 @@
+From 5a8a767ab6f3f59440151195d8b881ad625e6465 Mon Sep 17 00:00:00 2001
+From: Garrett Brown <themagnificentmrb@gmail.com>
+Date: Wed, 29 Jul 2020 09:46:44 -0700
+Subject: [PATCH 3/3] Remove email code for Emscripten
+
+Fixes error:
+
+    error: undefined symbol: popen (referenced by top-level compiled C/C++ code)
+---
+ src/logging.cc | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/logging.cc b/src/logging.cc
+index 0c86cf6..23a5074 100644
+--- a/src/logging.cc
++++ b/src/logging.cc
+@@ -1792,6 +1792,8 @@ static string ShellEscape(const string& src) {
+ // log_mutex.
+ static bool SendEmailInternal(const char*dest, const char *subject,
+                               const char*body, bool use_logging) {
++// popen not defined for Emscripten
++#if 0
+   if (dest && *dest) {
+     if ( use_logging ) {
+       VLOG(1) << "Trying to send TITLE:" << subject
+@@ -1830,6 +1832,7 @@ static bool SendEmailInternal(const char*dest, const char *subject,
+       }
+     }
+   }
++#endif
+   return false;
+ }
+ 
+-- 
+2.17.1
+
