@@ -59,5 +59,8 @@ jobs:
         if: steps.restore-node.outputs.cache-hit != 'true'
         run: yarn install
 
+      - name: yarn audit-ci
+        run: yarn audit-ci
+
       - name: yarn lint
         run: yarn lint
