@@ -23,11 +23,20 @@
     "audit": "audit-ci --moderate --package-manager npm",
     "build": "snowpack build",
     "clean": "rimraf build node_modules web_modules",
+    "depends": "bash tools/npm-depends.sh all",
+    "depends:build": "bash tools/npm-depends.sh build",
+    "depends:checkout": "bash tools/npm-depends.sh checkout",
+    "depends:install": "bash tools/npm-depends.sh install",
     "deploy": "gh-pages --branch main --repo https://github.com/eigendude/eigendude.github.io.git --dist build --dotfiles",
     "format": "prettier --write . && eslint --fix .",
     "lint": "prettier --check . && eslint .",
     "start": "snowpack dev",
     "test": "mocha"
+  },
+  "dependencies": {
+    "hls.js": "^1.0.10",
+    "jsonld": "^5.2.0",
+    "three": "^0.132.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
@@ -55,6 +64,8 @@
     "snowpack": "^3.8.8",
     "snowpack-plugin-copy": "^1.0.1",
     "snowpack-plugin-hmr-inject": "^0.1.5",
+    "threads": "^1.6.5",
+    "threads-plugin": "^1.4.0",
     "typescript": "^4.5.5"
   },
   "resolutions": {

@@ -1,0 +1,28 @@
+From 19319182a827563702424d4e597cd9bb25aba554 Mon Sep 17 00:00:00 2001
+From: Garrett Brown <themagnificentmrb@gmail.com>
+Date: Wed, 29 Jul 2020 10:16:24 -0700
+Subject: [PATCH] Fix sfm disabled when Eigen is present
+
+Fixes error:
+
+-- Module opencv_sfm disabled because the following dependencies are not found: Eigen
+---
+ modules/sfm/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/modules/sfm/CMakeLists.txt b/modules/sfm/CMakeLists.txt
+index 53a8d437..38b03b0a 100644
+--- a/modules/sfm/CMakeLists.txt
++++ b/modules/sfm/CMakeLists.txt
+@@ -9,6 +9,8 @@ find_package(Ceres QUIET)
+ if(NOT Ceres_FOUND)  # Looks like Ceres find glog on the own, so separate search isn't necessary
+   find_package(Glog QUIET)
+ endif()
++find_package(Eigen3 QUIET REQUIRED)
++set(HAVE_EIGEN 1)
+ 
+ if((gflags_FOUND OR GFLAGS_FOUND OR GFLAGS_INCLUDE_DIRS) AND (glog_FOUND OR GLOG_FOUND OR GLOG_INCLUDE_DIRS))
+   set(_fname "${CMAKE_CURRENT_BINARY_DIR}/test_sfm_deps.cpp")
+-- 
+2.17.1
+

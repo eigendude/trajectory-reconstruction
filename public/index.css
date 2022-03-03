@@ -1,0 +1,136 @@
+/*
+ * Copyright (C) 2019-2020 Garrett Brown
+ * This file is part of trajectory-reconstruction - https://github.com/eigendude/trajectory-reconstruction
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ * See LICENSE.txt for more information.
+ */
+
+/******************************************************************************
+ *
+ * Geometry
+ *
+ ******************************************************************************/
+
+body {
+  margin: 0;
+}
+
+/*
+ * Rendering
+ */
+
+#videoBackground {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+#renderCanvas,
+#overlayCanvas2D,
+#overlayCanvas3D {
+  position: fixed;
+}
+
+/*
+ * UI
+ */
+
+#volumeDownIcon,
+#volumeMuteIcon,
+#volumeOffIcon,
+#volumeUpIcon {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  width: 128px;
+  height: 128px;
+}
+#enterFullscreenIcon,
+#leaveFullscreenIcon {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 128px;
+  height: 128px;
+}
+#viewOverlayIcon,
+#hideOverlayIcon {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  width: 128px;
+  height: 128px;
+}
+
+/******************************************************************************
+ *
+ * Presentation
+ *
+ ******************************************************************************/
+
+body {
+  background-color: black;
+  font-family: Sans-Serif;
+}
+
+/*
+ * Rendering
+ */
+
+#videoBackground {
+  object-fit: cover;
+}
+#renderCanvas,
+#overlayCanvas2D,
+#overlayCanvas3D {
+  display: none;
+}
+
+/*
+ * UI
+ */
+
+#volumeDownIcon,
+#volumeMuteIcon,
+#volumeOffIcon,
+#volumeUpIcon {
+  display: none;
+  opacity: 0.5;
+}
+#enterFullscreenIcon,
+#leaveFullscreenIcon {
+  display: none;
+  opacity: 0.5;
+}
+#viewOverlayIcon,
+#hideOverlayIcon {
+  display: none;
+  opacity: 0.5;
+}
+
+/******************************************************************************
+ *
+ * Interaction
+ ******************************************************************************/
+
+/*
+ * UI
+ */
+
+#volumeDownIcon,
+#volumeMuteIcon,
+#volumeOffIcon,
+#volumeUpIcon {
+  cursor: pointer;
+}
+#enterFullscreenIcon,
+#leaveFullscreenIcon {
+  cursor: pointer;
+}
+#viewOverlayIcon,
+#hideOverlayIcon {
+  cursor: pointer;
+}

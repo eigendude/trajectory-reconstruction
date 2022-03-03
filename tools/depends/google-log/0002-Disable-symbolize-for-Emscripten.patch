@@ -1,0 +1,30 @@
+From acd68cb48a898a50ab3d6dd0b0c646dd7918e064 Mon Sep 17 00:00:00 2001
+From: Garrett Brown <themagnificentmrb@gmail.com>
+Date: Wed, 29 Jul 2020 09:33:35 -0700
+Subject: [PATCH 2/3] Disable symbolize for Emscripten
+
+Fixes error:
+
+    src/symbolize.cc:931:10: error: use of undeclared identifier 'SymbolizeAndDemangle'
+      return SymbolizeAndDemangle(pc, out, out_size);
+             ^
+---
+ CMakeLists.txt | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d1cb98a..6420a40 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -388,8 +388,6 @@ if (WIN32 OR CYGWIN)
+   if (HAVE_SYMBOLIZE)
+     set (HAVE_STACKTRACE 1)
+   endif (HAVE_SYMBOLIZE)
+-elseif (UNIX OR (APPLE AND HAVE_DLADDR))
+-  set (HAVE_SYMBOLIZE 1)
+ endif (WIN32 OR CYGWIN)
+ 
+ check_cxx_source_compiles ("
+-- 
+2.17.1
+
