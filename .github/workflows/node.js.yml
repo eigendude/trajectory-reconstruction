@@ -96,9 +96,3 @@ jobs:
       - name: Build depends
         if: steps.restore-libraries.outputs.cache-hit != 'true' || steps.restore-opencv.outputs.cache-hit != 'true'
         run: yarn depends
-
-      - name: yarn test
-        run: yarn test
-
-      - name: yarn build
-        run: yarn build
