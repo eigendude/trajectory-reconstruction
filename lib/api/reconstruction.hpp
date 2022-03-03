@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2020 Marquise Stein
- * This file is part of 8bitbot - https://github.com/botocracy/8bitbot
+ * Copyright (C) 2020 Garrett Brown
+ * This file is part of trajectory-reconstruction - https://github.com/eigendude/trajectory-reconstruction
  *
  * SPDX-License-Identifier: Apache-2.0
  * See LICENSE.txt for more information.
@@ -21,7 +21,7 @@ namespace reconstruction
   using TplTrajectoryDesc = std::tuple<cv::GMatDesc, cv::GMatDesc>;
 
   G_TYPED_KERNEL(GReconstructTrajectory, <TplTrajectory(cv::GArray<std::vector<cv::Point2f>>, cv::GMat)>,
-      "com.8bitbot.reconstructTrajectory")
+      "com.trajectoryReconstruction.reconstructTrajectory")
   {
     static TplTrajectoryDesc outMeta(cv::GArrayDesc pointHistory, cv::GMatDesc cameraDesc)
     {

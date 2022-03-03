@@ -1,11 +1,11 @@
 {
-  "name": "iot2web",
+  "name": "trajectory-reconstruction",
   "version": "1.0.0",
   "type": "module",
-  "description": "Library for interacting with IoT Core from the browser",
+  "description": "Trajectory reconstruction in the browser with OpenCV and Ceres",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Aclima/iot2web.git"
+    "url": "git://github.com/eigendude/trajectory-reconstruction.git"
   },
   "license": "Apache-2.0",
   "engines": {

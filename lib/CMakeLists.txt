@@ -1,7 +1,7 @@
 ################################################################################
 #
-#  Copyright (C) 2020 Marquise Stein
-#  This file is part of 8bitbot - https://github.com/botocracy/8bitbot
+#  Copyright (C) 2020 Garrett Brown
+#  This file is part of trajectory-reconstruction - https://github.com/eigendude/trajectory-reconstruction
 #
 #  SPDX-License-Identifier: Apache-2.0
 #  See the file LICENSE.txt for more information.
@@ -25,7 +25,7 @@
 #
 ################################################################################
 
-project(8bitbot)
+project(trajectory-reconstruction)
 
 cmake_minimum_required(VERSION 3.0.0)
 

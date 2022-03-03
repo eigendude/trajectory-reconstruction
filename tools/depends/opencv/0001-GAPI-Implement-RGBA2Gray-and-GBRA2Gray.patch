@@ -1,5 +1,5 @@
 From 4bd65501cf4bb5dd8484057aaaba3d69dfaf9f2e Mon Sep 17 00:00:00 2001
-From: Marquise Stein <botocratic@gmail.com>
+From: Garrett Brown <eigendebugger@gmail.com>
 Date: Mon, 19 Oct 2020 01:27:35 -0700
 Subject: [PATCH] GAPI: Implement RGBA2Gray and GBRA2Gray
 

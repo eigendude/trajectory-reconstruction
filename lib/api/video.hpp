@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2020 Marquise Stein
- * This file is part of 8bitbot - https://github.com/botocracy/8bitbot
+ * Copyright (C) 2020 Garrett Brown
+ * This file is part of trajectory-reconstruction - https://github.com/eigendude/trajectory-reconstruction
  *
  * SPDX-License-Identifier: Apache-2.0
  * See LICENSE.txt for more information.
@@ -17,7 +17,7 @@
 namespace video
 {
   G_TYPED_KERNEL(GPredictPoints, <cv::GArray<cv::Point2f>(cv::GArray<std::vector<cv::Point2f>>)>,
-      "com.8bitbot.predictPoints")
+      "com.trajectoryReconstruction.predictPoints")
   {
     static cv::GArrayDesc outMeta(cv::GArrayDesc in)
     {

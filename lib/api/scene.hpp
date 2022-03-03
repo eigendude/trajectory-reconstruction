@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2020 Marquise Stein
- * This file is part of 8bitbot - https://github.com/botocracy/8bitbot
+ * Copyright (C) 2020 Garrett Brown
+ * This file is part of trajectory-reconstruction - https://github.com/eigendude/trajectory-reconstruction
  *
  * SPDX-License-Identifier: Apache-2.0
  * See LICENSE.txt for more information.
@@ -20,7 +20,7 @@ namespace scene
 
   G_TYPED_KERNEL(GCalcSceneScore, <TplDoubles(
       cv::GMat, cv::GMat, cv::GOpaque<double>, unsigned int, unsigned int)>,
-      "com.8bitbot.calcSceneScore")
+      "com.trajectoryReconstruction.calcSceneScore")
   {
     static TplDoublesDesc outMeta(cv::GMatDesc,
                                   cv::GMatDesc,

@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2020 Marquise Stein
- * This file is part of 8bitbot - https: *github.com/botocracy/8bitbot
+ * Copyright (C) 2020 Garrett Brown
+ * This file is part of trajectory-reconstruction - https: *github.com/eigendude/trajectory-reconstruction
  *
  * SPDX-License-Identifier: Apache-2.0
  * See LICENSE.txt for more information.
@@ -17,7 +17,7 @@ namespace imgproc
 {
   G_TYPED_KERNEL(GGoodFeatures,
                  <cv::GArray<cv::Point2f>(cv::GMat, cv::GScalar, double, cv::GScalar, cv::Mat, int, bool, double)>,
-                 "com.8bitbot.imgproc.goodFeaturesToTrack") {
+                 "com.trajectoryReconstruction.imgproc.goodFeaturesToTrack") {
     static cv::GArrayDesc outMeta(cv::GMatDesc, cv::GScalarDesc, double, cv::GScalarDesc, const cv::Mat&, int, bool, double) {
       return cv::empty_array_desc();
     }

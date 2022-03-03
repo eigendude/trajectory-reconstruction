@@ -1,6 +1,6 @@
-# iot2web
+# trajectory-reconstruction
 
-Bridge from IoT Core to the web.
+Trajectory reconstruction in the browser with OpenCV and Ceres.
 
 ## Install dependencies
 

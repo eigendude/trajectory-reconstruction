@@ -1,5 +1,5 @@
 From 7885b23fa11c8305b96fcd886c88e8f3609c9e2f Mon Sep 17 00:00:00 2001
-From: Marquise Stein <botocratic@gmail.com>
+From: Garrett Brown <eigendebugger@gmail.com>
 Date: Sun, 12 Jul 2020 16:06:14 -0700
 Subject: [PATCH] Fix browser error bundling with Snowpack
 

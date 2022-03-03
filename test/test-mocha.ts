@@ -1,6 +1,9 @@
 /*
- * Copyright (C) 2021 Aclima, Inc.
- * This file is part of iot2web - https://github.com/Aclima/iot2web
+ * Copyright (C) 2021 Garrett Brown
+ * This file is part of trajectory-reconstruction - https://github.com/eigendude/trajectory-reconstruction
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ * See LICENSE.txt for more information.
  */
 
 /* eslint @typescript-eslint/no-unused-expressions: "off" */
