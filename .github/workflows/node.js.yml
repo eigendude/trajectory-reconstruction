@@ -73,7 +73,6 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            src/generated/opencv.js
             tools/dist
           key: restore-opencv-${{ matrix.os }}-${{ hashFiles('tools/depends/ade/*', 'tools/depends/ceres-solver/*', 'tools/depends/eigen/*', 'tools/depends/emscripten/*', 'tools/depends/google-flags/*', 'tools/depends/google-log/*', 'tools/depends/opencv/*') }}
 

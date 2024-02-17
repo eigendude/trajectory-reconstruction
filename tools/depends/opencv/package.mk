@@ -26,7 +26,6 @@ OPENCV_REPO_NAME = opencv
 OPENCV_VERSION = 4.5.0
 OPENCV_REMOTE_REPO = https://github.com/opencv/$(OPENCV_REPO_NAME).git
 OPENCV_LIB = libopencv_core.a
-OPENCV_JS_LIB = opencv.js
 
 # OpenCV extra modules
 OPENCV_CONTRIB_REPO_NAME = opencv_contrib
@@ -47,11 +46,9 @@ BUILD_DIR_OPENCV = $(BUILD_DIR)/$(OPENCV_REPO_NAME)
 
 # Build output
 BUILD_FILE_OPENCV = $(BUILD_DIR_OPENCV)/lib/$(OPENCV_LIB)
-BUILD_FILE_OPENCV_JS = $(BUILD_DIR_OPENCV)/bin/$(OPENCV_JS_LIB)
 
 # Install output
 INSTALL_FILE_OPENCV = $(DEPENDS_DIR)/lib/$(OPENCV_LIB)
-INSTALL_FILE_OPENCV_JS = $(INSTALL_DIR)/$(OPENCV_JS_LIB)
 
 ################################################################################
 #
@@ -185,8 +182,8 @@ $(BUILD_FILE_OPENCV): $(S)/.prebuild $(OPENCV_BUILD_DEPENDS)
 	    -DBUILD_opencv_stitching=OFF \
 	    -DBUILD_opencv_java=OFF \
 	    -DBUILD_opencv_java_bindings_generator=OFF \
-	    -DBUILD_opencv_js=ON \
-	    -DBUILD_opencv_js_bindings_generator=ON \
+	    -DBUILD_opencv_js=OFF \
+	    -DBUILD_opencv_js_bindings_generator=OFF \
 	    -DBUILD_opencv_python2=OFF \
 	    -DBUILD_opencv_python3=OFF \
 	    -DBUILD_opencv_python_bindings_generator=OFF \
@@ -209,8 +206,7 @@ $(BUILD_FILE_OPENCV): $(S)/.prebuild $(OPENCV_BUILD_DEPENDS)
 	      -s DISABLE_EXCEPTION_CATCHING=1 \
 	    " \
 
-	OPENCV_JS_WHITELIST="$(TOOL_DIR)/depends/opencv/opencv_js.config.py" \
-	  make -C "${BUILD_DIR_OPENCV}" -j$(shell getconf _NPROCESSORS_ONLN)
+	make -C "${BUILD_DIR_OPENCV}" -j$(shell getconf _NPROCESSORS_ONLN)
 
 	touch "$@"
 
@@ -233,15 +229,5 @@ $(INSTALL_FILE_OPENCV): $(S)/.preinstall $(S)/build-opencv
 
 	touch "$@"
 
-$(INSTALL_FILE_OPENCV_JS): $(S)/.preinstall $(S)/build-opencv \
-  $(TOOL_DIR)/depends/opencv/0001-temp-Hack-opencv.js-to-ES6.patch
-	mkdir -p "$(INSTALL_DIR)"
-
-	# Copy generated files
-	cp "$(BUILD_FILE_OPENCV_JS)" "$(INSTALL_DIR)"
-
-	# Hack in ES6 support
-	patch --no-backup-if-mismatch -d "$(INSTALL_DIR)" < "$(TOOL_DIR)/depends/opencv/0001-temp-Hack-opencv.js-to-ES6.patch"
-
-$(S)/install-opencv: $(INSTALL_FILE_OPENCV) $(INSTALL_FILE_OPENCV_JS)
+$(S)/install-opencv: $(INSTALL_FILE_OPENCV)
 	touch "$@"

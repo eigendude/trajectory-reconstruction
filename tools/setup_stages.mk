@@ -76,6 +76,5 @@ $(S)/.prebuild:
 
 $(S)/.preinstall:
 	mkdir -p "$(S)"
-	mkdir -p "$(INSTALL_DIR)"
 
 	touch "$@"

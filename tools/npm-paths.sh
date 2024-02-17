@@ -26,12 +26,6 @@ set -o nounset
 # Directory definitions
 #
 
-# Typescript/Javascript source directory
-SOURCE_DIR="src"
-
-# Directory for generated source
-GENERATED_SOURCE_DIR="${SOURCE_DIR}/generated"
-
 # C++ libraries directory
 CPP_LIBRARY_DIR="lib"
 
