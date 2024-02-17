@@ -26,10 +26,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-18.04
-            node-version: 12
           - os: ubuntu-20.04
             node-version: 16
+          - os: ubuntu-20.04
+            node-version: 20
+          #- os: ubuntu-22.04
+          #  node-version: 20
 
     # Steps represent a sequence of tasks that will be executed as part of the
     # job
@@ -40,16 +42,16 @@ jobs:
         # Check-out the repository under $GITHUB_WORKSPACE, so the job can
         # access it
       - name: Checkout main repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
       - name: Restore node modules
         id: restore-node
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: |
             node_modules
