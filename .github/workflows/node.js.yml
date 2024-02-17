@@ -27,11 +27,9 @@ jobs:
       matrix:
         include:
           - os: ubuntu-20.04
-            node-version: 16
-          - os: ubuntu-20.04
+            node-version: 18
+          - os: ubuntu-22.04
             node-version: 20
-          #- os: ubuntu-22.04
-          #  node-version: 20
 
     # Steps represent a sequence of tasks that will be executed as part of the
     # job

@@ -52,7 +52,7 @@ class MotionTracker {
     const radius = 1;
     const widthSegments = 8;
     const heightSegments = 8;
-    this.geometry = new THREE.SphereBufferGeometry(
+    this.geometry = new THREE.SphereGeometry(
       radius,
       widthSegments,
       heightSegments
