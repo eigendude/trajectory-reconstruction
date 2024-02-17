@@ -14,8 +14,17 @@ import { spawn, Thread, Transfer, Worker } from "threads";
 const VIDEO_WIDTH = 640;
 const VIDEO_HEIGHT = 480;
 
+// Type for the frame info
+interface FrameInfo {
+  pts: number;
+  sceneScore: number;
+  points: any[]; // TODO
+  initialPoints: any[]; // TODO
+  projectionMatrix: any; // TODO
+}
+
 // Promise that is resolved when a decoded frame is processed
-let resolveFrameProcessed;
+let resolveFrameProcessed: (value: FrameInfo | PromiseLike<FrameInfo>) => void;
 
 describe("Motion tracker", function () {
   before(async function () {
@@ -28,8 +37,14 @@ describe("Motion tracker", function () {
     this.worker
       .onFrameProcessed()
       .subscribe(
-        ({ pts, sceneScore, points, initialPoints, projectionMatrix }) => {
-          const frameInfo = {
+        ({
+          pts,
+          sceneScore,
+          points,
+          initialPoints,
+          projectionMatrix,
+        }: FrameInfo) => {
+          const frameInfo: FrameInfo = {
             pts: pts,
             sceneScore: sceneScore,
             points: points,
@@ -59,7 +74,7 @@ describe("Motion tracker", function () {
   });
 
   it(`should process frames`, async function () {
-    function getFrame(fill) {
+    function getFrame(fill: number): Uint8ClampedArray {
       // Allocate new pixel data
       let videoBuffer = new ArrayBuffer(VIDEO_WIDTH * VIDEO_HEIGHT * 4);
       let videoData = new Uint8ClampedArray(videoBuffer);
