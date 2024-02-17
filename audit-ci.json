@@ -1,0 +1,13 @@
+{
+  "$schema": "https://github.com/IBM/audit-ci/raw/main/docs/schema.json",
+  "package-manager": "yarn",
+  "low": false,
+  "moderate": true,
+  "high": true,
+  "critical": true,
+  "allowlist": [
+    "GHSA-cchq-frgv-rjh5",
+    "GHSA-g644-9gfx-q4q4",
+    "GHSA-p8p7-x288-28g6"
+  ]
+}

@@ -16,7 +16,7 @@
     "science"
   ],
   "scripts": {
-    "audit": "audit-ci --moderate --package-manager npm",
+    "audit-ci": "audit-ci --config audit-ci.json",
     "build": "snowpack build",
     "clean": "rimraf build node_modules web_modules",
     "depends": "bash tools/npm-depends.sh all",
