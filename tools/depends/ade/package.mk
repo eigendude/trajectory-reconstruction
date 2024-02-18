@@ -22,7 +22,7 @@
 
 # Dependency name and version
 ADE_REPO_NAME = ade
-ADE_VERSION = 0.1.1f
+ADE_VERSION = 0.1.2d
 ADE_REMOTE_REPO = https://github.com/opencv/$(ADE_REPO_NAME).git
 ADE_LIB = libade.a
 
