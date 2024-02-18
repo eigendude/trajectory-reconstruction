@@ -50,7 +50,7 @@ mkdir -p "${INSTALL_DIRECTORY}"
 # Setup environment
 #
 
-source "${EMSDK_DIRECTORY}/emsdk_set_env.sh"
+source "${EMSDK_DIRECTORY}/emsdk_env.sh"
 
 #
 # Call CMake

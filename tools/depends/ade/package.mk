@@ -80,7 +80,7 @@ $(BUILD_FILE_ADE): $(S)/.prebuild $(ADE_BUILD_DEPENDS)
 
 	# Activate PATH and other environment variables in the current terminal and
 	# build ADE
-	. "$(REPO_DIR_EMSDK)/emsdk_set_env.sh" && \
+	. "$(REPO_DIR_EMSDK)/emsdk_env.sh" && \
 	  cd "${BUILD_DIR_ADE}" && \
 	  emcmake cmake "$(REPO_DIR_ADE)" \
 	    -DCMAKE_INSTALL_PREFIX="$(DEPENDS_DIR)" \

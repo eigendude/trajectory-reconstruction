@@ -138,16 +138,15 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
   set_target_properties(motion_tracker PROPERTIES
     COMPILE_FLAGS " \
       -O0 \
-      -g4 \
+      -gsource-map \
       -s DISABLE_EXCEPTION_CATCHING=0 \
-      -s INITIAL_MEMORY=26214400 \
     "
     # 26214400 is 25 MiB
     LINK_FLAGS " \
       --bind \
-      --source-map-base https://7351e5a.online-server.cloud/motion_tracker/ \
+      --source-map-base https://eigendude.github.io/ \
       -O0 \
-      -g4 \
+      -gsource-map \
       -s DISABLE_EXCEPTION_CATCHING=0 \
       -s INITIAL_MEMORY=26214400 \
     "

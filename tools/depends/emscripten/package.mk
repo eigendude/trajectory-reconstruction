@@ -21,8 +21,8 @@
 
 # Dependency name and version
 EMSDK_REPO_NAME = emsdk
-EMSDK_VERSION = 1.39.18
-EMSDK_SDK_TOOLS_VERSION = latest-upstream
+EMSDK_VERSION = 3.1.54
+EMSDK_SDK_TOOLS_VERSION = latest
 EMSDK_REMOTE_REPO = https://github.com/emscripten-core/$(EMSDK_REPO_NAME).git
 EMSDK_BINARY = emsdk
 

@@ -79,7 +79,7 @@ $(BUILD_FILE_GFLAGS): $(S)/.prebuild $(GFLAGS_BUILD_DEPENDS)
 
 	# Activate PATH and other environment variables in the current terminal and
 	# build gflags
-	. "$(REPO_DIR_EMSDK)/emsdk_set_env.sh" && \
+	. "$(REPO_DIR_EMSDK)/emsdk_env.sh" && \
 	  cd "${BUILD_DIR_GFLAGS}" && \
 	  emcmake cmake "$(REPO_DIR_GFLAGS)" \
 	    -DCMAKE_INSTALL_PREFIX="$(DEPENDS_DIR)" \

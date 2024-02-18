@@ -87,7 +87,7 @@ $(BUILD_FILE_CERES): $(S)/.prebuild $(CERES_BUILD_DEPENDS)
 
 	# Activate PATH and other environment variables in the current terminal and
 	# build ceres
-	. "$(REPO_DIR_EMSDK)/emsdk_set_env.sh" && \
+	. "$(REPO_DIR_EMSDK)/emsdk_env.sh" && \
 	  cd "${BUILD_DIR_CERES}" && \
 	  emcmake cmake "$(REPO_DIR_CERES)" \
 	    -DCMAKE_FIND_ROOT_PATH="$(DEPENDS_DIR)" \

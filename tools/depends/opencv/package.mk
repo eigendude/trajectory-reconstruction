@@ -125,7 +125,7 @@ $(BUILD_FILE_OPENCV): $(S)/.prebuild $(OPENCV_BUILD_DEPENDS)
 
 	# Activate PATH and other environment variables in the current terminal and
 	# build OpenCV
-	. "$(REPO_DIR_EMSDK)/emsdk_set_env.sh" && \
+	. "$(REPO_DIR_EMSDK)/emsdk_env.sh" && \
 	  cd "${BUILD_DIR_OPENCV}" && \
 	  emcmake cmake "$(REPO_DIR_OPENCV)" \
 	    -DCMAKE_FIND_ROOT_PATH="$(DEPENDS_DIR)" \
@@ -196,13 +196,9 @@ $(BUILD_FILE_OPENCV): $(S)/.prebuild $(OPENCV_BUILD_DEPENDS)
 	    -DCV_ENABLE_INTRINSICS=OFF \
 	    -DBUILD_WASM_INTRIN_TESTS=OFF \
 	    -DCMAKE_C_FLAGS=" \
-	      -s WASM=1 \
-	      -s USE_PTHREADS=0 \
 	      -s DISABLE_EXCEPTION_CATCHING=1 \
 	    " \
 	    -DCMAKE_CXX_FLAGS=" \
-	      -s WASM=1 \
-	      -s USE_PTHREADS=0 \
 	      -s DISABLE_EXCEPTION_CATCHING=1 \
 	    " \
 
