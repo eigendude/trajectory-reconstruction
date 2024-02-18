@@ -56,7 +56,6 @@ SHELL := /bin/bash
 ################################################################################
 
 include depends/ade/package.mk
-include depends/android-sdk/package.mk
 include depends/ceres-solver/package.mk
 include depends/eigen/package.mk
 include depends/emscripten/package.mk
@@ -85,10 +84,6 @@ CHECKOUT_DEPENDS = \
   $(S)/checkout-glog \
   $(S)/checkout-opencv \
   $(S)/patch-opencv
-
-ifeq ($(PLATFORM),darwin)
-  #CHECKOUT_DEPENDS += $(S)/checkout-android-sdk # TODO
-endif
 
 #
 # Define targets for "make build"

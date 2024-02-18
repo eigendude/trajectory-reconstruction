@@ -71,10 +71,6 @@ OPENCV_BUILD_DEPENDS = \
   $(OPENCV_GAPI_BUILD_DEPENDS) \
   $(OPENCV_SFM_BUILD_DEPENDS) \
 
-ifeq ($(PLATFORM),darwin)
-  #OPENCV_BUILD_DEPENDS += $(S)/checkout-android-sdk
-endif
-
 ################################################################################
 #
 # Checkout
