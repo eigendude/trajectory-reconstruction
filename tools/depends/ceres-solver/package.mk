@@ -26,7 +26,7 @@
 
 # Dependency name and version
 CERES_REPO_NAME = ceres-solver
-CERES_VERSION = 1.14.0
+CERES_VERSION = 2.2.0
 CERES_REMOTE_REPO = https://github.com/ceres-solver/$(CERES_REPO_NAME).git
 CERES_LIB = libceres.a
 
