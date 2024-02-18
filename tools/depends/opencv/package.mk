@@ -23,7 +23,7 @@
 
 # Dependency name and version
 OPENCV_REPO_NAME = opencv
-OPENCV_VERSION = 4.5.0
+OPENCV_VERSION = 4.9.0
 OPENCV_REMOTE_REPO = https://github.com/opencv/$(OPENCV_REPO_NAME).git
 OPENCV_LIB = libopencv_core.a
 
@@ -75,7 +75,9 @@ OPENCV_BUILD_DEPENDS = \
 ################################################################################
 
 $(S)/checkout-opencv: $(S)/.precheckout \
-  $(TOOL_DIR)/depends/opencv/0001-Fix-sfm-disabled-when-Eigen-is-present.patch
+  $(TOOL_DIR)/depends/opencv/0001-Fix-sfm-disabled-when-Eigen-is-present.patch \
+  $(TOOL_DIR)/depends/opencv/0001-GAPI-Implement-RGBA2Gray-and-GBRA2Gray.patch \
+  $(TOOL_DIR)/depends/opencv/0002-Disable-iconv-support-for-wechat_qrcode.patch
 	[ -d "$(REPO_DIR_OPENCV)" ] || ( \
 	  git clone -b $(OPENCV_VERSION) "$(OPENCV_REMOTE_REPO)" "$(REPO_DIR_OPENCV)" && \
 	  patch -p1 --forward --directory="$(REPO_DIR_OPENCV)" < \
@@ -90,6 +92,10 @@ $(S)/checkout-opencv: $(S)/.precheckout \
 
 	patch -p1 --forward --directory="$(REPO_DIR_OPENCV_CONTRIB)" < \
 	  "$(TOOL_DIR)/depends/opencv/0001-Fix-sfm-disabled-when-Eigen-is-present.patch" || ( \
+	    code=$$?; [[ "$${code}" -lt "2" ]] || exit $${code}; \
+	  )
+	patch -p1 --forward --directory="$(REPO_DIR_OPENCV_CONTRIB)" < \
+	  "$(TOOL_DIR)/depends/opencv/0002-Disable-iconv-support-for-wechat_qrcode.patch" || ( \
 	    code=$$?; [[ "$${code}" -lt "2" ]] || exit $${code}; \
 	  )
 
