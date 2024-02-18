@@ -21,7 +21,7 @@
 
 # Dependency name and version
 EIGEN_REPO_NAME = eigen
-EIGEN_VERSION = 3.3.7
+EIGEN_VERSION = 3.4.0
 EIGEN_REMOTE_REPO = https://gitlab.com/libeigen/$(EIGEN_REPO_NAME).git
 EIGEN_HEADER = Matrix.h
 
