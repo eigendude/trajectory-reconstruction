@@ -9,33 +9,39 @@
 import { Observable, Subject } from "threads/observable";
 import { expose } from "threads/worker";
 
-import Module from "../../public/motion_tracker/motion_tracker.js";
+import ModuleFactory from "../../public/motion_tracker/motion_tracker.js";
 
-// Motion tracker
+// Emscripten Module after initialization
+let Module;
+
+// Motion tracker instance
 let tracker;
 
 // Streaming worker results
 let frameProcessedSubject = new Subject();
 
-// Promise that is resolved when module runtime is initialized
-let resolveInitialize;
-let runtimeInitialized = new Promise((resolve, reject) => {
-  resolveInitialize = resolve;
-});
+// Initialize the Emscripten Module and the MotionTracker
+async function initializeModule() {
+  if (!Module) {
+    // Load and instantiate the Emscripten module
+    Module = await ModuleFactory();
 
-// Called when WASM module is initialized
-Module.onRuntimeInitialized = (_) => {
-  resolveInitialize();
-};
+    // Create an instance of MotionTracker
+    tracker = new Module.MotionTracker();
+  }
+}
 
 const motionTracker = {
   async initialize() {
-    await runtimeInitialized;
-
-    tracker = new Module.MotionTracker();
+    // Ensure the Emscripten Module is initialized
+    await initializeModule();
   },
 
   async open(videoWidth, videoHeight) {
+    if (!tracker) {
+      throw new Error("Motion tracker is not initialized");
+    }
+
     return tracker.initialize(videoWidth, videoHeight);
   },
 
@@ -93,6 +99,10 @@ const motionTracker = {
   },
 
   async close() {
+    if (!tracker) {
+      throw new Error("Motion tracker is not initialized");
+    }
+
     tracker.deinitialize();
   },
 

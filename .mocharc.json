@@ -1,4 +1,3 @@
 {
-  "extension": ["ts"],
-  "require": "test/babel-register.cjs"
+  "extension": ["ts"]
 }

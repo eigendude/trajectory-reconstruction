@@ -25,7 +25,9 @@ class MotionTracker {
     this.video = null;
 
     // Web worker
-    this.motionWorker = new Worker(WORKER_PATH);
+    this.motionWorker = new Worker(new URL(WORKER_PATH, import.meta.url), {
+      type: "module",
+    });
     this.motionWorkerInitialized = false;
     this.motionWorkerOpen = false;
 

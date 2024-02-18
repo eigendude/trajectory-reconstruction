@@ -6,7 +6,7 @@
  * See LICENSE.txt for more information.
  */
 
-import chai from "chai";
+import * as chai from "chai";
 import { performance } from "perf_hooks";
 import { spawn, Thread, Transfer, Worker } from "threads";
 
@@ -31,9 +31,7 @@ describe("Motion tracker", function () {
     this.timeout(3000);
 
     // Motion tracker
-    this.worker = await spawn(
-      new Worker("../src/workers/motion_tracker_module")
-    );
+    this.worker = await spawn(new Worker("./workers/motion_tracker_module"));
     this.worker
       .onFrameProcessed()
       .subscribe(

@@ -8,7 +8,7 @@
 
 /* eslint @typescript-eslint/no-unused-expressions: "off" */
 
-import chai from "chai";
+import * as chai from "chai";
 
 describe("Mocha", function () {
   it("should perform a basic test", async function () {

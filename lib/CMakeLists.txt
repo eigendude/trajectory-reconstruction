@@ -76,46 +76,10 @@ set(MOTION_TRACKER_SOURCES
 #
 # Build libraries
 #
-# TODO:
-#
-#   * Build properly instead of shelling out
-#   * Could refactor this into macros
-#
 ################################################################################
 
 include_directories(
   ${CMAKE_SOURCE_DIR}
-)
-
-string(APPEND EMSCRIPTEN_LINK_FLAGS
-  "--bind "
-  # "-o dist/engine.js "
-  # " -std=c++11 "
-  # " -O2 "
-  # " --preload-file textures "
-  # " --preload-file shaders "
-  # " --preload-file fonts "
-  # " --pre-js pre-module.j "
-  # " --post-js post-module.j "
-  "-s ALLOW_MEMORY_GROWTH=1 "
-  "-s ASSERTIONS=1 "
-  # " -s DEMANGLE_SUPPORT=1 "
-  # " -s DISABLE_EXCEPTION_CATCHING=0 "
-  "-s ERROR_ON_UNDEFINED_SYMBOLS=0 "
-  # " -s FULL_ES3=1 "
-  # " -s GL_ASSERTIONS=1 "
-  # " -s GL_UNSAFE_OPTS=0 "
-  # " -s INVOKE_RUN=0 "
-  # " -s LEGACY_GL_EMULATION=0 "
-  #"-s LLD_REPORT_UNDEFINED "
-  # " -s OFFSCREENCANVAS_SUPPORT=1 "
-  # " -s SAFE_HEAP=1 "
-  #"-s TOTAL_MEMORY=67108864 "
-  # " -s USE_FREETYPE=1 "
-  # " -s USE_GLFW=3 "
-  # " -s USE_WEBGL2=1 "
-  "-s USE_ZLIB=1 "
-  # " -s WASM=1 "
 )
 
 #
@@ -149,6 +113,8 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
       -gsource-map \
       -s DISABLE_EXCEPTION_CATCHING=0 \
       -s INITIAL_MEMORY=26214400 \
+      -s EXPORT_ES6=1 \
+      -s MODULARIZE=1 \
     "
   )
 endif ()

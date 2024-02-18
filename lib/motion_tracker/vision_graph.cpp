@@ -144,7 +144,8 @@ void VisionGraph::Compile(unsigned int width,
   m_findFeatures = featurePipeline.compile(cv::descr_of(currentGrayscale), cv::descr_of(maxFeatures), cv::descr_of(minDistance), cv::compile_args(kernels));
   m_calcSceneScore = sceneScorePipeline.compile(cv::descr_of(previousGrayscale), cv::descr_of(currentGrayscale), cv::descr_of(previousMafd), cv::compile_args(kernels));
   m_calcOpticalFlow = opticalFlowPipeline.compile(cv::descr_of(previousGrayscale), cv::descr_of(currentGrayscale), cv::descr_of(currentPoints), cv::descr_of(pointHistory), cv::compile_args(kernels));
-  m_reconstructTrajectory = reconstructTrajectoryPipeline.compile(cv::descr_of(pointHistory), cv::descr_of(previousCameraMatrix), cv::compile_args(kernels));
+  // TODO
+  //m_reconstructTrajectory = reconstructTrajectoryPipeline.compile(cv::descr_of(pointHistory), cv::descr_of(previousCameraMatrix), cv::compile_args(kernels));
 }
 
 void VisionGraph::ApplyGrayscale(

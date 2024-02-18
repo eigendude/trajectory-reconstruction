@@ -27,7 +27,7 @@
     "format": "prettier --write . && eslint --fix .",
     "lint": "prettier --check . && eslint .",
     "start": "snowpack dev",
-    "test": "mocha --loader=ts-node/esm"
+    "test": "mocha --loader=ts-node/esm/transpile-only"
   },
   "dependencies": {
     "hls.js": "^1.5.6",
@@ -35,11 +35,6 @@
     "three": "^0.161.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.9",
-    "@babel/plugin-transform-runtime": "^7.23.9",
-    "@babel/preset-env": "^7.23.9",
-    "@babel/preset-typescript": "^7.23.3",
-    "@babel/register": "^7.23.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@snowpack/plugin-typescript": "^1.2.1",
     "@types/chai": "^4.3.11",
