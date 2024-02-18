@@ -22,7 +22,7 @@
 
 # Dependency name and version
 GLOG_REPO_NAME = glog
-GLOG_VERSION = 0.4.0
+GLOG_VERSION = 0.7.0
 GLOG_REMOTE_REPO = https://github.com/google/$(GLOG_REPO_NAME).git
 GLOG_LIB = libglog.a
 
@@ -61,30 +61,12 @@ GLOG_BUILD_DEPENDS = \
 #
 ################################################################################
 
-$(S)/checkout-glog: $(S)/.precheckout \
-  $(TOOL_DIR)/depends/google-log/0001-Disable-syscalls-for-Emscripten.patch \
-  $(TOOL_DIR)/depends/google-log/0002-Disable-symbolize-for-Emscripten.patch \
-  $(TOOL_DIR)/depends/google-log/0003-Remove-email-code-for-Emscripten.patch
+$(S)/checkout-glog: $(S)/.precheckout
 	[ -d "$(REPO_DIR_GLOG)" ] || ( \
 	  git clone -b v$(GLOG_VERSION) "$(GLOG_REMOTE_REPO)" "$(REPO_DIR_GLOG)" \
 	)
 
 	@# TODO: Repository sync is delegated to the CI system.
-
-	patch -p1 --forward --directory="$(REPO_DIR_GLOG)" < \
-	  "$(TOOL_DIR)/depends/google-log/0001-Disable-syscalls-for-Emscripten.patch" || ( \
-	    code=$$?; [[ "$${code}" -lt "2" ]] || exit $${code}; \
-	  )
-
-	patch -p1 --forward --directory="$(REPO_DIR_GLOG)" < \
-	  "$(TOOL_DIR)/depends/google-log/0002-Disable-symbolize-for-Emscripten.patch" || ( \
-	    code=$$?; [[ "$${code}" -lt "2" ]] || exit $${code}; \
-	  )
-
-	patch -p1 --forward --directory="$(REPO_DIR_GLOG)" < \
-	  "$(TOOL_DIR)/depends/google-log/0003-Remove-email-code-for-Emscripten.patch" || ( \
-	    code=$$?; [[ "$${code}" -lt "2" ]] || exit $${code}; \
-	  )
 
 	touch "$@"
 
