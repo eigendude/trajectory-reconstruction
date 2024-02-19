@@ -2,7 +2,6 @@
   "include": ["src", "test"],
   "exclude": ["node_modules"],
   "sourceMap": true,
-  "strict": true,
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,

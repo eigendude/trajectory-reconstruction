@@ -8,7 +8,7 @@
 
 import * as THREE from "three";
 
-const WORKER_PATH = "./motion_tracker/motion_tracker_worker.js";
+const WORKER_PATH = "/motion_tracker/motion_tracker_worker.js";
 
 // Maximum size of the largest dimension
 const MAX_RENDER_SIZE = 512;
@@ -37,7 +37,9 @@ class MotionTracker {
     this.overlayCanvas3D = document.getElementById("overlayCanvas3D");
 
     // Render context handles
-    this.renderContext = this.renderCanvas.getContext("2d");
+    this.renderContext = this.renderCanvas.getContext("2d", {
+      willReadFrequently: true,
+    });
     this.overlayContext = this.overlayCanvas2D.getContext("2d");
 
     // State
