@@ -164,7 +164,7 @@ function fullscreenAvailable() {
 }
 
 // UI state
-window.showOverlay = false;
+window.showOverlay = true;
 
 // Toggle overlay
 function toggleOverlay() {

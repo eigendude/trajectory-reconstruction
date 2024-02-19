@@ -261,6 +261,11 @@ class MotionTracker {
       return;
     }
 
+    if (!this.video) {
+      // Not started yet
+      return;
+    }
+
     // Update dimensions before the video is rendered
     if (!this.computeDimensions()) {
       return;
