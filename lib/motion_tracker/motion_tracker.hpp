@@ -27,7 +27,7 @@ struct ConfigOptions
   unsigned int maxPointCount = 200;
 
   // The maximum number of frames to solve for
-  unsigned int maxFrameCount = 40;
+  unsigned int maxFrameCount = 300;
 };
 
 struct FrameInfo
